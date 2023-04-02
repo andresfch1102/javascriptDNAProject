@@ -81,6 +81,7 @@ const pAequorInstances = ()=>{
     let arrInst = pAequorFactory(survNum, mockUpStrand());
     if(arrInst.willLikelySurvive()){
       survDnaArr.push(arrInst.dna);
+      console.log(arrInst.specimenNum);
       instances++;
     }
   }
