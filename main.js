@@ -63,14 +63,29 @@ const pAequorFactory = (num, baseArr) =>{
       return occurCorG/this.dna.length >= survIndex;
     },
 
+    complementStrand(){
+      const complementArr = [];
+      for(let i=0; i<this.dna.length; i++){
+        switch (this.dna[i]){
+          case 'A':
+            complementArr.push('T');
+            break;
+          case 'T':
+            complementArr.push('A');
+            break;
+          case 'C':
+            complementArr.push('G');
+            break;
+          case 'G':
+            complementArr.push('C');
+            break;
+        }
+      }
+      return complementArr;
+    },
+
   }
 }
-/*let example1 = pAequorFactory(1, mockUpStrand());
-let example2 = pAequorFactory(2,mockUpStrand());
-
-console.log(example1.compareDNA(example2));
-console.log(example1.willLikelySurvive());
-console.log(example2.willLikelySurvive());*/
 
 const pAequorInstances = ()=>{
   let survDnaArr = [];
@@ -81,7 +96,6 @@ const pAequorInstances = ()=>{
     let arrInst = pAequorFactory(survNum, mockUpStrand());
     if(arrInst.willLikelySurvive()){
       survDnaArr.push(arrInst.dna);
-      console.log(arrInst.specimenNum);
       instances++;
     }
   }
@@ -89,7 +103,11 @@ const pAequorInstances = ()=>{
 }
 
 let arrayOfSurvDna = pAequorInstances();
-console.log(arrayOfSurvDna);
+//console.log(arrayOfSurvDna);
+
+let example1 = pAequorFactory(1, mockUpStrand());
+console.log(example1.dna);
+console.log(example1.complementStrand());
 
 
 
