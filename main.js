@@ -39,8 +39,8 @@ const pAequorFactory = (num, baseArr) =>{
     },
 
     compareDNA(obj){
-      //console.log(this.dna);
-      //console.log(obj.dna);
+      console.log(this.dna);
+      console.log(obj.dna);
       let occurrences = 0;
       for(let i=0; i<obj.dna.length; i++){
         if(obj.dna[i] === this.dna[i]){
@@ -89,25 +89,26 @@ const pAequorFactory = (num, baseArr) =>{
 
 const pAequorInstances = ()=>{
   let survDnaArr = [];
-  let instances = 0;
   let survNum = 1; 
-  while(instances < 30){
+  while(survDnaArr.length < 30){
     survNum++;
     let arrInst = pAequorFactory(survNum, mockUpStrand());
     if(arrInst.willLikelySurvive()){
       survDnaArr.push(arrInst.dna);
-      instances++;
     }
   }
   return survDnaArr;
 }
 
-let arrayOfSurvDna = pAequorInstances();
+//let arrayOfSurvDna = pAequorInstances();
 //console.log(arrayOfSurvDna);
 
-let example1 = pAequorFactory(1, mockUpStrand());
+/*let example1 = pAequorFactory(1, mockUpStrand());
 console.log(example1.dna);
-console.log(example1.complementStrand());
+console.log(example1.complementStrand());*/
+
+let example2 = pAequorFactory(1, mockUpStrand());
+console.log(example2.compareDNA(pAequorFactory(3,mockUpStrand())));
 
 
 
